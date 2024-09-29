@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Saint Seiya Card Matching Game</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <title>Saint Seiya memory</title>
+  </head>
+  <main>
+    <h1 class="page-title">Saint Seiya memory</h1>
+    <div class="music-alg">
+      <button id="music-toggle" class="music-toggle">Musique</button>
+    </div>
+    <div class="overlay-text visible">
+      Cliquez pour commencer
+    </div>
+    <div id="game-over-text" class="overlay-text">
+      PERDU
+      <span class="overlay-text-small">Cliquez pour recommencer</span>
+    </div>
+    <div id="victory-text" class="overlay-text">
+      VICTOIRE
+      <span class="overlay-text-small">Cliquez pour recommencer</span>
+    </div>
+    <div class="game-container">
+      <div class="game-info-container">
+        <div class="game-info">
+          Temps <span id="time-remaining">100</span>
+        </div>
+        <div class="game-info">
+          Flips <span id="flips">0</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/hades2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/hades2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/athena3.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/athena3.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/gemeaux.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/gemeaux.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/balance.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/balance.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/12009402_83.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/12009402_83.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/poseidon2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/poseidon2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/harpie.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/harpie.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/thanatos2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/thanatos2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/wyvern2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/wyvern2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/griffon2.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-back card-face">
+          <img class="spider" src="images/backcard.webp">
+        </div>
+        <div class="card-front card-face">
+          <img class="card-value" src="images/griffon2.jpg">
+        </div>
+      </div>
+  </main>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
