@@ -71,7 +71,7 @@ class MixOrMatch {
         return setInterval(() => {
             this.timeRemaining--;
             this.timer.innerText = this.timeRemaining;
-            if(this.timeRemaining === 0)
+            if (this.timeRemaining === 0)
                 this.gameOver();
         }, 1000);
     }
@@ -92,13 +92,13 @@ class MixOrMatch {
         });
     }
     flipCard(card) {
-        if(this.canFlipCard(card)) {
+        if (this.canFlipCard(card)) {
             this.audioController.flip();
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
 
-            if(this.cardToCheck) {
+            if (this.cardToCheck) {
                 this.checkForCardMatch(card);
             } else {
                 this.cardToCheck = card;
@@ -106,9 +106,9 @@ class MixOrMatch {
         }
     }
     checkForCardMatch(card) {
-        if(this.getCardType(card) === this.getCardType(this.cardToCheck))
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
-        else 
+        else
             this.cardMismatch(card, this.cardToCheck);
 
         this.cardToCheck = null;
@@ -119,7 +119,7 @@ class MixOrMatch {
         card1.classList.add('matched');
         card2.classList.add('matched');
         this.audioController.match();
-        if(this.matchedCards.length === this.cardsArray.length)
+        if (this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
     cardMismatch(card1, card2) {
@@ -130,6 +130,7 @@ class MixOrMatch {
             this.busy = false;
         }, 1000);
     }
+    // mélanger un tableau de cartes (shuffleCards)
     shuffleCards(cardsArray) {
         for (let i = cardsArray.length - 1; i > 0; i--) {
             const randIndex = Math.floor(Math.random() * (i + 1));
@@ -176,3 +177,38 @@ function ready() {
         game.audioController.toggleMusic();
     });
 }
+
+const cardImages = [
+    "images/saintSeiya/hades2.jpg",
+    "images/saintSeiya/athena3.jpg",
+    "images/saintSeiya/gemeaux.jpg",
+    "images/saintSeiya/balance.jpg",
+    "images/saintSeiya/12009402_83.jpg",
+    "images/saintSeiya/poseidon2.jpg",
+    "images/saintSeiya/harpie.jpg",
+    "images/saintSeiya/thanatos2.jpg",
+    "images/saintSeiya/wyvern2.jpg",
+    "images/saintSeiya/griffon2.jpg"
+];
+// Dupliquer chaque image pour créer des paires
+const cards = [...cardImages, ...cardImages];
+
+// Mélanger les cartes
+cards.sort(() => Math.random() - 0.5);
+
+const cardContainer = document.getElementById('card-container');
+
+// Générer le HTML pour chaque carte
+cards.forEach(image => {
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+    cardDiv.innerHTML = `
+              <div class="card-back card-face">
+                <img class="spider" src="images/backcard.webp">
+              </div>
+              <div class="card-front card-face">
+                <img class="card-value" src="${image}">
+              </div>
+            `;
+    cardContainer.appendChild(cardDiv);
+});
