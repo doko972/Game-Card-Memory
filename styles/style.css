@@ -43,7 +43,7 @@ body {
 .game-info-container {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .game-info {
@@ -52,13 +52,22 @@ body {
   font-size: 5rem;
 }
 
-.game-container {
+/* .game-container {
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-gap: 1.25rem;
+  grid-gap: 1.25rem; */
   /* margin: 50px; */
-  justify-content: center;
+  /* justify-content: center;
   perspective: 500px;
+} */
+
+#card-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto); /* 4 colonnes pour les cartes */
+  grid-gap: 1.25rem; /* Espace entre les cartes */
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Un peu d'espace autour */
 }
 
 .card {
@@ -94,9 +103,9 @@ body {
   transform: rotateY(0)
 }
 
-/* .card.matched .card-value {
-  animation: dance 1s linear infinite 500ms;
-} */
+.card.matched .card-value {
+  animation: dance 10s infinite ease-in-out;
+}
 
 .overlay-text {
   display: none;
@@ -135,14 +144,14 @@ body {
 }
 
 @keyframes dance {
-  0%, 100%  {
-    transform: rotate(0);
+  0%, 100% {
+    transform: rotate3d(0, 0, 0, 0deg);
   }
   25% {
-    transform: rotate(-20deg);
+    transform: rotate3d(1, 0, 0, 360deg);
   }
   75% {
-    transform: rotate(20deg);
+    transform: rotate3d(1, 0, 0, -360deg);
   }
 }
 
@@ -152,7 +161,7 @@ body {
 ;}
 
 .card-front {
-  background-color: var(--color1);
+  background-color: #ffbb00;
   border-color: var(--border);
   transform: rotateY(180deg);
 }
