@@ -52,22 +52,13 @@ body {
   font-size: 5rem;
 }
 
-/* .game-container {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 1.25rem; */
-  /* margin: 50px; */
-  /* justify-content: center;
-  perspective: 500px;
-} */
-
 #card-container {
   display: grid;
-  grid-template-columns: repeat(4, auto); /* 4 colonnes pour les cartes */
-  grid-gap: 1.25rem; /* Espace entre les cartes */
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1.25rem;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Un peu d'espace autour */
+  padding: 20px;
 }
 
 .card {
@@ -237,7 +228,8 @@ body {
   }
 }
 .music-toggle,
-.theme-select
+.theme-select,
+.start-game-button
  {
   background-color: var(--color2);
   border: 2px solid var(--color1);
@@ -252,12 +244,16 @@ body {
   font-weight: normal;
 }
 
-.music-toggle:hover {
+.music-toggle:hover,
+.theme-select:hover,
+.start-game-button:hover {
   background-color: var(--color1);
   border: 2px solid var(--color2);
 }
 
-.music-toggle:active {
+.music-toggle:active,
+.theme-select:active,
+.start-game-button:active {
   background-color: var(--color1);
   border: 2px solid var(--color2);
   transform: scale(0.95);
