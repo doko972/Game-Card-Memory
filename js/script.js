@@ -1,43 +1,25 @@
 class AudioController {
     constructor() {
-        this.bgMusic = new Audio('son/game.mp3');
         this.flipSound = new Audio('son/flip.mp3');
         this.matchSound = new Audio('son/match.mp3');
         this.victorySound = new Audio('son/victory.mp3');
         this.gameOverSound = new Audio('son/game-over-arcade-6435.mp3');
-        this.bgMusic.volume = 0.5;
-        this.bgMusic.loop = true;
-        this.isMusicPlaying = false;
     }
-    startMusic() {
-        this.bgMusic.play();
-        this.isMusicPlaying = true;
-    }
-    stopMusic() {
-        this.bgMusic.pause();
-        this.bgMusic.currentTime = 0;
-        this.isMusicPlaying = false;
-    }
+
     flip() {
         this.flipSound.play();
     }
+
     match() {
         this.matchSound.play();
     }
+
     victory() {
-        this.stopMusic();
         this.victorySound.play();
     }
+
     gameOver() {
-        this.stopMusic();
         this.gameOverSound.play();
-    }
-    toggleMusic() {
-        if (this.isMusicPlaying) {
-            this.stopMusic();
-        } else {
-            this.startMusic();
-        }
     }
 }
 
@@ -46,9 +28,10 @@ class MixOrMatch {
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
-        this.timer = document.getElementById('time-remaining')
+        this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
         this.audioController = new AudioController();
+        this.matchedCards = [];
     }
 
     startGame() {
@@ -57,40 +40,47 @@ class MixOrMatch {
         this.cardToCheck = null;
         this.matchedCards = [];
         this.busy = true;
+
         setTimeout(() => {
-            this.audioController.startMusic();
             this.shuffleCards(this.cardsArray);
             this.countdown = this.startCountdown();
             this.busy = false;
-        }, 500)
+        }, 500);
+
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
     }
+
     startCountdown() {
         return setInterval(() => {
             this.timeRemaining--;
             this.timer.innerText = this.timeRemaining;
-            if (this.timeRemaining === 0)
+            if (this.timeRemaining === 0) {
                 this.gameOver();
+            }
         }, 1000);
     }
+
     gameOver() {
         clearInterval(this.countdown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
     }
+
     victory() {
         clearInterval(this.countdown);
         this.audioController.victory();
         document.getElementById('victory-text').classList.add('visible');
     }
+
     hideCards() {
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
             card.classList.remove('matched');
         });
     }
+
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.audioController.flip();
@@ -105,23 +95,28 @@ class MixOrMatch {
             }
         }
     }
-    checkForCardMatch(card) {
-        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
-            this.cardMatch(card, this.cardToCheck);
-        else
-            this.cardMismatch(card, this.cardToCheck);
 
+    checkForCardMatch(card) {
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck)) {
+            this.cardMatch(card, this.cardToCheck);
+        } else {
+            this.cardMismatch(card, this.cardToCheck);
+        }
         this.cardToCheck = null;
     }
+
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         card1.classList.add('matched');
         card2.classList.add('matched');
         this.audioController.match();
-        if (this.matchedCards.length === this.cardsArray.length)
+
+        if (this.matchedCards.length === this.cardsArray.length) {
             this.victory();
+        }
     }
+
     cardMismatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
@@ -130,7 +125,7 @@ class MixOrMatch {
             this.busy = false;
         }, 1000);
     }
-    // mélanger un tableau de cartes (shuffleCards)
+
     shuffleCards(cardsArray) {
         for (let i = cardsArray.length - 1; i > 0; i--) {
             const randIndex = Math.floor(Math.random() * (i + 1));
@@ -140,42 +135,14 @@ class MixOrMatch {
             card.style.order = index;
         });
     }
+
     getCardType(card) {
         return card.getElementsByClassName('card-value')[0].src;
     }
+
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
-}
-
-if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready)
-} else {
-    ready()
-}
-
-function ready() {
-    let overlays = Array.from(document.getElementsByClassName('overlay-text'));
-    let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MixOrMatch(100, cards);
-
-    overlays.forEach(overlay => {
-        overlay.addEventListener('click', () => {
-            overlay.classList.remove('visible');
-            game.startGame();
-        });
-    });
-
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            game.flipCard(card);
-        });
-    });
-
-    const musicToggleButton = document.getElementById('music-toggle');
-    musicToggleButton.addEventListener('click', () => {
-        game.audioController.toggleMusic();
-    });
 }
 
 const cardImages = [
@@ -190,25 +157,65 @@ const cardImages = [
     "images/saintSeiya/wyvern2.jpg",
     "images/saintSeiya/griffon2.jpg"
 ];
-// Dupliquer chaque image pour créer des paires
-const cards = [...cardImages, ...cardImages];
+const cardImagesDbz = [
+    "images/dragonBall/vegeta.jpg",
+    "images/dragonBall/yamcha.jpg",
+    "images/dragonBall/trunk.jpg",
+    "images/dragonBall/tortue.jpg",
+    "images/dragonBall/sangoku.jpg",
+    "images/dragonBall/sangohan.jpg",
+    "images/dragonBall/picolo.jpg",
+    "images/dragonBall/freezer.jpg",
+    "images/dragonBall/boo.jpg",
+    "images/dragonBall/broly.jpg"
+];
 
-// Mélanger les cartes
-cards.sort(() => Math.random() - 0.5);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ready);
+} else {
+    ready();
+}
 
-const cardContainer = document.getElementById('card-container');
+function ready() {
+    let game;
+    let cards;
+    let currentTheme = 'saintSeiya';
+    const cardContainer = document.getElementById('card-container');
 
-// Générer le HTML pour chaque carte
-cards.forEach(image => {
-    const cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
-    cardDiv.innerHTML = `
-              <div class="card-back card-face">
-                <img class="spider" src="images/backcard.webp">
-              </div>
-              <div class="card-front card-face">
-                <img class="card-value" src="${image}">
-              </div>
+    function loadCards(theme) {
+        const selectedImages = theme === 'saintSeiya' ? [...cardImages, ...cardImages] : [...cardImagesDbz, ...cardImagesDbz];
+        cardContainer.innerHTML = '';
+        selectedImages.sort(() => Math.random() - 0.5);
+        cards = [];
+        selectedImages.forEach(image => {
+            const cardDiv = document.createElement('div');
+            cardDiv.classList.add('card');
+            cardDiv.innerHTML = `
+                <div class="card-back card-face">
+                    <img class="spider" src="${theme === 'saintSeiya' ? 'images/backcard.webp' : 'images/backdbz.webp'}">
+                </div>
+                <div class="card-front card-face">
+                    <img class="card-value" src="${image}">
+                </div>
             `;
-    cardContainer.appendChild(cardDiv);
-});
+            cardContainer.appendChild(cardDiv);
+            cards.push(cardDiv);
+            cardDiv.addEventListener('click', () => {
+                game.flipCard(cardDiv);
+            });
+        });
+    }
+
+    const themeSelect = document.getElementById('theme-select');
+    themeSelect.addEventListener('change', () => {
+        currentTheme = themeSelect.value;
+    });
+
+    const startGameButton = document.getElementById('start-game-button');
+    startGameButton.addEventListener('click', () => {
+        loadCards(currentTheme);
+        document.querySelector(".overlay-text").classList.remove("visible");
+        game = new MixOrMatch(100, cards);
+        game.startGame();
+    });
+}

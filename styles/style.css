@@ -223,7 +223,7 @@ body {
   transform: translateY(0)
 }
 
-@media (max-width: 600px) {
+@media (max-height: 600px) {
   .game-container {
     grid-template-columns: repeat(2, auto);
   }
@@ -236,7 +236,9 @@ body {
     align-items: center;
   }
 }
-.music-toggle {
+.music-toggle,
+.theme-select
+ {
   background-color: var(--color2);
   border: 2px solid var(--color1);
   border-radius: 2rem;
