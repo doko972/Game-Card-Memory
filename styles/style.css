@@ -1,13 +1,13 @@
 @font-face {
-  font-family: "Greconian";
-  src: url("../fonts/Greconian.woff") format("woff"), 
-  url("../fonts/Greconian.woff2") format("woff2")
+  font-family: "Achafont";
+  src: url("../fonts/Achafont.woff") format("woff"), 
+  url("../fonts/Achafont.woff2") format("woff2")
 }
 
 @font-face {
-  font-family: "Saintly";
-  src: url("../fonts/Saintly.woff") format("woff"), 
-  url("../fonts/Saintly.woff2") format("woff2")
+  font-family: "AB_Barberian";
+  src: url("../fonts/AB_Barberian.woff") format("woff"), 
+  url("../fonts/AB_Barberian.woff2") format("woff2")
 }
 
 * {
@@ -20,8 +20,8 @@ html {
 }
 
 :root{
-  --color1: #00FF9D;
-  --color2: #AEDBCA;
+  --color1: #FF0000;
+  --color2: #FFB2B2;
   --border: #333;
   font-size: 14px;
 }
@@ -29,15 +29,15 @@ body {
   margin: 0;
   background-image: url("../images/background2.webp");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size:contain;
 }
 
 .page-title {
   color: var(--color1);
-  font-family: Greconian, serif;
+  font-family: AB_Barberian, serif;
   font-weight: normal;
   text-align: center;
-  font-size: 7rem;
+  font-size: 8rem;
 }
 
 .game-info-container {
@@ -47,27 +47,18 @@ body {
 }
 
 .game-info {
-  font-family: Saintly, serif;
-  color: var(--color2);
-  font-size: 5rem;
+  font-family: Achafont, serif;
+  color: var(--color1);
+  font-size: 6rem;
 }
-
-/* .game-container {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 1.25rem; */
-  /* margin: 50px; */
-  /* justify-content: center;
-  perspective: 500px;
-} */
 
 #card-container {
   display: grid;
-  grid-template-columns: repeat(4, auto); /* 4 colonnes pour les cartes */
-  grid-gap: 1.25rem; /* Espace entre les cartes */
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1.25rem;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Un peu d'espace autour */
+  padding: 20px;
 }
 
 .card {
@@ -118,7 +109,7 @@ body {
   align-items: center;
   z-index: 100;
   color: var(--color1);
-  font-family: Greconian, serif;
+  font-family: Achafont, serif;
 }
 
 .overlay-text-small {
@@ -246,7 +237,7 @@ body {
   transition: background-color 0.3s, border-color 0.3s;
   margin: 0 0 2rem 2rem;
   font-size: 3rem;
-  font-family: Greconian, serif;
+  font-family: AB_Barberian, serif;
   font-weight: normal;
 }
 

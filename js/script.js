@@ -179,16 +179,16 @@ function ready() {
 }
 
 const cardImages = [
-    "images/saintSeiya/hades2.jpg",
-    "images/saintSeiya/athena3.jpg",
-    "images/saintSeiya/gemeaux.jpg",
-    "images/saintSeiya/balance.jpg",
-    "images/saintSeiya/12009402_83.jpg",
-    "images/saintSeiya/poseidon2.jpg",
-    "images/saintSeiya/harpie.jpg",
-    "images/saintSeiya/thanatos2.jpg",
-    "images/saintSeiya/wyvern2.jpg",
-    "images/saintSeiya/griffon2.jpg"
+    "images/normand/1.webp",
+    "images/normand/2.webp",
+    "images/normand/3.webp",
+    "images/normand/4.webp",
+    "images/normand/5.webp",
+    "images/normand/6.webp",
+    "images/normand/7.webp",
+    "images/normand/8.webp",
+    "images/normand/9.webp",
+    "images/normand/10.webp"
 ];
 // Dupliquer chaque image pour créer des paires
 const cards = [...cardImages, ...cardImages];
